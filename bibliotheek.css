@@ -1,0 +1,72 @@
+header{
+
+    background-color: #565b5a;
+    color: white;
+    text-align: center;
+    font-family: "PT Sans", "Book Antiqua", Palatino, serif;
+    font-size: 60px;
+    letter-spacing: 5px;
+}
+
+header::first-letter {
+    color: #e8c264;
+    font-size: 90px;
+}
+
+#customers {            
+    font-family: "PT Sans", Arial Narrow, Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 1.0em;
+    word-wrap: break-word;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #87daed;}
+#customers tr:nth-child(odd){background-color: #c3edf7;}
+
+#customers tr:hover {background-color: #687677;
+    color: white;
+}
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #687677;
+    color: white;
+}
+
+body {background-color: #565b5a;}
+
+.topnav {
+    background-color: #687677;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+    
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #95dbd0;
+    color: black;
+}
+
+#table.notities{
+    padding-top: 20px;
+}
+
+
