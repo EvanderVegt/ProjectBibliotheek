@@ -6,6 +6,8 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <header>Notities</header>
+        <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
         <meta charset="UTF-8">
         <title>Notities</title>
            <nav>

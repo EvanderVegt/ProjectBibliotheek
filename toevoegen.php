@@ -2,6 +2,8 @@
 ?>
 <html>
     <head>
+        <header>Bewerken</header>
+        <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
         <meta charset="UTF-8">
         <title>Toevoegen</title>
     <nav>
@@ -60,14 +62,14 @@
 
     echo <<<_END
   <form action="toevoegen.php" method="post"><pre>
- Invoerdatum <input type="text" name="Invoerdatum">
-       Titel <input type="text" name="Titel">
-      Auteur <input type="text" name="Auteur">
-         ISBN<input type="text" name="ISBN">
-     Uitgever<input type="text" name="Uitgever">
-    Categorie<input type="text" name="Categorie">
-      Ranking<input type="text" name="Ranking">
-     Notities<input type="text" name="Notities">
+ Invoerdatum <input type="text" name="Invoerdatum" required>
+       Titel <input type="text" name="Titel" required>
+      Auteur <input type="text" name="Auteur" required>
+         ISBN<input type="text" name="ISBN" required>
+     Uitgever<input type="text" name="Uitgever" required>
+    Categorie<input type="text" name="Categorie" required>
+      Ranking<input type="text" name="Ranking" required>
+     Notities<input type="text" name="Notities" required>
            <input type="submit" value="ADD RECORD">
   </pre></form>
 _END;
