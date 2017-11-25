@@ -13,7 +13,10 @@ function connectionDB() {
 
 function createtable($conn) {
 
-    $sql = "SELECT * FROM `boek`;";
+    $sql = "SELECT boek.Boek_id, boek.Invoerdatum, boek.Titel, boek.Titel, boek.Auteur,
+        boek.Isbn, boek.Uitgever, boek.Categorie, boek.Ranking, notitie.Notitie
+FROM boek
+INNER JOIN notitie ON boek.Boek_id = notitie.Notitie_id;";
     $result = $conn->query($sql);
     echo "<table id=customers>";
     $TR = "<tr>";
@@ -43,7 +46,7 @@ function createtable($conn) {
         echo"Ranking";
         echo"</th>";
         echo"<th>";
-        echo"Notities";
+        echo"Notitie";
         echo"</th>";
     }
     for ($x = 0; $x < $result->num_rows; $x++) {
@@ -74,7 +77,7 @@ function createtable($conn) {
         echo $row['Ranking'];
         echo "</td>";
         echo "<td>";
-        echo $row['Notities'];
+        echo $row['Notitie'];
         echo "</td>";
         echo "</tr>";
     }
@@ -99,4 +102,5 @@ function createTagSelect($ParamConn, $selectidname) {
 
     return $eruit; // return the result
 }
+
 ?>   
