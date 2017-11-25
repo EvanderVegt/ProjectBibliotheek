@@ -13,13 +13,13 @@ function connectionDB() {
 
 function createtable($conn) {
 
-    $sql = "SELECT * FROM `bibliotheek`;";
+    $sql = "SELECT * FROM `boek`;";
     $result = $conn->query($sql);
     echo "<table id=customers>";
     $TR = "<tr>";
     for ($x = 0; $x < 1; $x++) {
         echo"<th>";
-        echo"id";
+        echo"Boek_id";
         echo"</th>";
         echo"<th>";
         echo"Invoerdatum";
@@ -50,7 +50,7 @@ function createtable($conn) {
         $row = $result->fetch_assoc();
         echo "<tr>";
         echo "<td>";
-        echo $row['id'];
+        echo $row['Boek_id'];
         echo "</td>";
         echo "<td>";
         echo $row['Invoerdatum'];
@@ -62,7 +62,7 @@ function createtable($conn) {
         echo $row['Auteur'];
         echo "</td>";
         echo "<td>";
-        echo $row['ISBN'];
+        echo $row['Isbn'];
         echo "</td>";
         echo "<td>";
         echo $row['Uitgever'];
@@ -84,7 +84,7 @@ function createtable($conn) {
 }
 
 function createTagSelect($ParamConn, $selectidname) {
-    $sql = "SELECT * FROM `bibliotheek`;";   // Make a query for the DATABASE
+    $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
     $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
 
     $eruit = "<select>";  // assign the <select> openings tag with id and event=functioncall as string  

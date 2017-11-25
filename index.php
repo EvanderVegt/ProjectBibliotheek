@@ -24,27 +24,64 @@
     <?php
     $conn = connectionDB();    // Call for a PHP function // We can not find it on this page SO it must be on the shared page generalfunctions.php
     echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
-    ?>
 
 
-    <div id="notities">
-        <form>
-            <textarea  name="<?php echo $notie; ?>" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>
-            <input type="submit" value="Verzenden" id="button">
-        </form>
-    </div>
-
-
-    <?php
-    if (isset($_POST['$notie'])) {
-        echo 'iets';
+    if (isset($_POST['delete']) && isset($_POST['Notitie_id'])) {
+        $notitie_id = get_post($conn, 'Notitie_id');
+        $query = "DELETE FROM `notitie` WHERE Notitie_id='$notitie_id'";
+        $result = $conn->query($query);
+        if (!$result)
+            echo "DELETE failed: $query<br>" .
+            $conn->error . "<br><br>";
     }
 
+    if (isset($_POST['Notitie'])) {
+        $notities = get_post($conn, 'Notitie');
+        $query = "INSERT INTO `notitie`" . "(`Notitie`)" . " VALUES ('" . $notities . "')";
+        $result = $conn->query($query);
 
-    $query = "UPDATE `bibliotheek` SET `Notities`='" . $notie . "' WHERE `Titel`";
+        if (!$result)
+            echo "INSERT failed: $query<br>" .
+            $conn->error . "<br><br>";
+    }
 
+    echo <<<_END
+         <form action="index.php" method="post"><pre>
+         <textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>
+         <input type="submit" value="Verzenden">
+         </pre></form>
+_END;
+
+    $query = "SELECT * FROM `notitie`";
     $result = $conn->query($query);
+    if (!$result)
+        die("Database access failed: " . $conn->error);
+
+    $rows = $result->num_rows;
+
+    for ($j = 0; $j < $rows; ++$j) {
+        $result->data_seek($j);
+        $row = $result->fetch_array(MYSQLI_NUM);
+
+        echo <<<_END
+<pre>
+    Notitie_id: $row[0]
+    Notitie   : $row[1]
+
+</pre>
+    <form action="index.php" method="post">
+    <input type="hidden" name="delete" value="yes">
+    <input type="hidden" name="Notitie_id" value="$row[0]">
+    <input type="submit" value="DELETE RECORD"></form>
+_END;
+    }
+
+    $result->close();
     $conn->close();
+
+    function get_post($conn, $var) {
+        return $conn->real_escape_string($_POST[$var]);
+    }
     ?>
 </body>
 </html>
