@@ -8,6 +8,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bibliotheek info</title>
         <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
+        <script>
+            function letsgo() {
+                var te = document.getElementById("eriksselect").value;
+                alert(te);
+
+            }
+        </script>
+
+        <script>
+            function letsgaan() {
+                var twee = document.getElementById("eriksselectboek").value;
+                alert(twee);
+
+            }
+        </script>
     <nav>
         <header>Bibliotheek info Pagina</header>
         <div class="topnav" id="myTopnav">
@@ -24,23 +39,21 @@
     <?php
     $conn = connectionDB();    // Call for a PHP function // We can not find it on this page SO it must be on the shared page generalfunctions.php
     echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
-
+    echo createTagSelect1($conn, "Boek_id");
 
     if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
         $notitie_id = get_post($conn, 'Boek_id');
         $query = "DELETE FROM `notitie` WHERE `notitie`.`Notitie_id`='$notitie_id'";
-       // DELETE FROM `notitie` WHERE `notitie`.`Notitie_id` = 27
         $result = $conn->query($query);
         if (!$result)
             echo "DELETE failed: $query<br>" .
             $conn->error . "<br><br>";
     }
 
-    if (isset($_POST['Notitie']) && isset($_POST['Boek_id'])) {
+    if (isset($_POST['Notitie']) or isset($_POST['Boek_id'])) {
         $notities = get_post($conn, 'Notitie');
-        $boek_id= get_post($conn, 'Boek_id');
-     //   $query = "INSERT INTO `notitie`" . "(`Notitie`)" . " VALUES ('" . $notities . "')";
-        $query = "INSERT INTO `notitie`" . "(`Notitie_id`, `Notitie`, `Boek_id`)" . " VALUES (NULL,'" .  $notities  . "','" . $boek_id . "')";
+        $boek_id = get_post($conn, 'Boek_id');
+        $query = "INSERT INTO `notitie`" . "(`Notitie_id`, `Notitie`, `Boek_id`)" . " VALUES (NULL,'" . $notities . "', '" . $boek_id . "')";
         $result = $conn->query($query);
 
         if (!$result)
@@ -53,10 +66,11 @@
          <textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>
          <input type="submit" value="Verzenden">
          </pre></form>
+    
 _END;
- 
 
-  
+
+
 
     $query = "SELECT * FROM `notitie`";
     $result = $conn->query($query);
@@ -81,8 +95,8 @@ _END;
     <input type="submit" value="DELETE RECORD"></form>
 _END;
     }
-        $result->close();
-      $conn->close();
+    $result->close();
+    $conn->close();
 
     function get_post($conn, $var) {
         return $conn->real_escape_string($_POST[$var]);

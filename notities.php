@@ -13,15 +13,7 @@
                 <a href="bibliotheek.php"> Bibliotheek </a>
                 <a href="notities.php">Notities </a>
             </div>
-        </nav>
+            </nav>
     </head>
-    <body>
-        <?php
-        
-   
-
-    
-        ?>
-    </body>
 </html>
 

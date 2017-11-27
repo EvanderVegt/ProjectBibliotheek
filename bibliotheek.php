@@ -1,18 +1,11 @@
 <?php include 'General.php';
 ?>
-
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <header>Bibliotheek</header>
-        <link rel = "stylesheet" type = "text/css" href="bibliotheek.css"> 
-        <meta charset="UTF-8">
-        <title>Bibliotheek</title>
+    <header>Bibliotheek</header>
+    <link rel = "stylesheet" type = "text/css" href="bibliotheek.css"> 
+    <meta charset="UTF-8">
+    <title>Bibliotheek</title>
     <nav>
         <div class="topnav" id="myTopnav">
             <a href="index.php" class="active">Home</a>
@@ -21,18 +14,13 @@ and open the template in the editor.
             <a href="notities.php">Notities </a>
         </div>
     </nav>
+</head> 
 
-
-        <form id="table">
-        <?php
-        $conn = connectionDB();
-        echo createtable($conn);
-        ?> 
-        </form>
-
-<body>
+<form id="table">
     <?php
-    // put your code here
-    ?>
-</body>
+    $conn = connectionDB();  // verbinding
+    echo createtable($conn);
+    ?> 
+</form>
+
 </html>

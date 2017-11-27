@@ -2,10 +2,10 @@
 ?>
 <html>
     <head>
-        <header>Bewerken</header>
-        <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
-        <meta charset="UTF-8">
-        <title>Toevoegen</title>
+    <header>Bewerken</header>
+    <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
+    <meta charset="UTF-8">
+    <title>Toevoegen</title>
     <nav>
         <div class="topnav" id="myTopnav">
             <a href="index.php" class="active">Home</a>
