@@ -16,7 +16,11 @@
     </nav>
 </head>
 <body>
+
+
     <?php
+    $myDate = date("d-m-Y H:i:s");
+
     $conn = connectionDB();
 
     if ($conn->connect_error)
@@ -31,14 +35,12 @@
             $conn->error . "<br><br>";
     }
 
-    if (isset($_POST['Invoerdatum']) &&
-            isset($_POST['Titel']) &&
+    if (isset($_POST['Titel']) &&
             isset($_POST['Auteur']) &&
             isset($_POST['Isbn']) &&
             isset($_POST['Uitgever']) &&
             isset($_POST['Categorie']) &&
             isset($_POST['Ranking'])) {
-        $invoerdatum = get_post($conn, 'Invoerdatum');
         $titel = get_post($conn, 'Titel');
         $auteur = get_post($conn, 'Auteur');
         $isbn = get_post($conn, 'Isbn');
@@ -47,7 +49,7 @@
         $ranking = get_post($conn, 'Ranking');
         $query = "INSERT INTO `boek`"
                 . "(`Invoerdatum`, `Titel`, `Auteur`, `Isbn`, `Uitgever`, `Categorie`, `Ranking`)"
-                . " VALUES ('" . $invoerdatum . "','" . $titel . "','" . $auteur . "','"
+                . " VALUES ('" . $myDate . "','" . $titel . "','" . $auteur . "','"
                 . $isbn . "','" . $uitgever . "','" . $categorie . "','" . $ranking . "')";
         $result = $conn->query($query);
 
@@ -60,7 +62,7 @@
 
     echo <<<_END
   <form action="toevoegen.php" method="post"><pre>
- Invoerdatum <input type="text" name="Invoerdatum" required>
+
        Titel <input type="text" name="Titel" required>
       Auteur <input type="text" name="Auteur" required>
          ISBN<input type="text" name="Isbn" required>

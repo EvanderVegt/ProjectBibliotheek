@@ -8,13 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bibliotheek info</title>
         <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
-        <script>
-            function letsgo() {
-                var te = document.getElementById("eriksselect").value;
-                alert(te);
 
-            }
-        </script>
 
     <nav>
         <header>Bibliotheek info Pagina</header>
@@ -31,7 +25,7 @@
 
     <?php
     $conn = connectionDB();    // Call for a PHP function // We can not find it on this page SO it must be on the shared page generalfunctions.php
- 
+
     if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
         $notitie_id = get_post($conn, 'Boek_id');
         $query = "DELETE FROM `notitie` WHERE `notitie`.`Notitie_id`='$notitie_id'";
@@ -54,15 +48,12 @@
     }
 
 
-        echo "<form action=\"index.php\" method=\"post\"><pre>";
-        echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
+    echo "<form action=\"index.php\" method=\"post\"><pre>";
+    echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
+    echo '<textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>';
+    echo '<input type="submit" value="Verzenden">';
+    echo '</pre></form>';
 
-
-  
-         echo '<textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>';
-         echo '<input type="submit" value="Verzenden">';
-         echo '</pre></form>';
-    
 
 
 

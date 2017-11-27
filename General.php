@@ -105,6 +105,4 @@ function createTagSelect($ParamConn) {
 
     return $eruit; // return the result
 }
-
-
 ?> 
