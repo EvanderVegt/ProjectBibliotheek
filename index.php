@@ -16,13 +16,6 @@
             }
         </script>
 
-        <script>
-            function letsgaan() {
-                var twee = document.getElementById("eriksselectboek").value;
-                alert(twee);
-
-            }
-        </script>
     <nav>
         <header>Bibliotheek info Pagina</header>
         <div class="topnav" id="myTopnav">
@@ -63,7 +56,7 @@
 
         echo "<form action=\"index.php\" method=\"post\"><pre>";
         echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
-        echo createTagSelect1($conn, "Boek_id");
+
 
   
          echo '<textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>';

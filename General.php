@@ -89,7 +89,7 @@ LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
 
 function createTagSelect($ParamConn) {
     $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
-    //$sql = "SELECT boek.Boek_id, boek.Titel FROM `boek`;";
+
 
 
     $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
@@ -98,7 +98,7 @@ function createTagSelect($ParamConn) {
     for ($x = 0; $x < $erinResultSet->num_rows; $x++) {// count the number of records in the recordset and make sure that the for loops that amount of times
         $row = $erinResultSet->fetch_assoc();  // Get the next record AS an array into the variable row
         $eruit .= "<option value=" . $row['Boek_id'] . ">";   // append new string information with .=
-        $eruit .= $row['Boek_id']; // make the option with only the naam out of the record set
+        $eruit .= $row['Titel']; // make the option with only the naam out of the record set
         $eruit .= "</option>";
     }
     $eruit .= "</select>"; // <select closing tag
@@ -106,22 +106,5 @@ function createTagSelect($ParamConn) {
     return $eruit; // return the result
 }
 
-function createTagSelect1($ParamConn) {
-    $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
-    //$sql = "SELECT boek.Boek_id, boek.Titel FROM `boek`;";
 
-
-    $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
-
-    $eruit = "<select id=eriksselect onchange=letsgo() >";  // assign the <select> openings tag with id and event=functioncall as string  
-   for ($x = 0; $x < $erinResultSet->num_rows; $x++) {// count the number of records in the recordset and make sure that the for loops that amount of times
-        $row = $erinResultSet->fetch_assoc();  // Get the next record AS an array into the variable row
-       $eruit .= "<option value=" . $row['Boek_id'] . ">";   // append new string information with .=
-        $eruit .= $row['Titel']; // make the option with only the naam out of the record set
-        $eruit .= "</option>";
-    }
-    $eruit .= "</select>"; // <select closing tag
-
-   return $eruit; // return the result
-}
 ?> 
