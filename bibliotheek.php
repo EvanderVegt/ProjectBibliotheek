@@ -18,7 +18,7 @@ and open the template in the editor.
             <a href="index.php" class="active">Home</a>
             <a href="toevoegen.php"> Toevoegen </a>
             <a href="bibliotheek.php"> Bibliotheek </a>
-            <a href="#notities">Notities </a>
+            <a href="notities.php">Notities </a>
         </div>
     </nav>
 

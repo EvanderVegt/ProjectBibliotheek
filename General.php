@@ -13,7 +13,8 @@ function connectionDB() {
 
 function createtable($conn) {
 
-    $sql = "SELECT boek.Boek_id, boek.Invoerdatum, boek.Titel, boek.Titel, boek.Auteur,
+
+    $sql = "SELECT boek.Boek_id, boek.Invoerdatum, boek.Titel, boek.Auteur,
         boek.Isbn, boek.Uitgever, boek.Categorie, boek.Ranking, notitie.Notitie
 FROM boek
 INNER JOIN notitie ON boek.Boek_id = notitie.Notitie_id;";
@@ -87,7 +88,10 @@ INNER JOIN notitie ON boek.Boek_id = notitie.Notitie_id;";
 }
 
 function createTagSelect($ParamConn, $selectidname) {
-    $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
+  $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
+   //$sql = "SELECT boek.Boek_id, boek.Titel FROM `boek`;";
+
+
     $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
 
     $eruit = "<select>";  // assign the <select> openings tag with id and event=functioncall as string  
@@ -95,6 +99,7 @@ function createTagSelect($ParamConn, $selectidname) {
         $row = $erinResultSet->fetch_assoc();  // Get the next record AS an array into the variable row
         $eruit .= "<option>";   // append new string information with .=
         $eruit .= $row['Titel']; // make the option with only the naam out of the record set
+        $eruit .= $row['Boek_id']; // make the option with only the naam out of the record set
         $eruit .= "</option>";
     }
     $eruit .= "</select>"; // <select closing tag
@@ -102,5 +107,4 @@ function createTagSelect($ParamConn, $selectidname) {
 
     return $eruit; // return the result
 }
-
 ?>   

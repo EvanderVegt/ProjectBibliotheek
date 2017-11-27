@@ -14,7 +14,7 @@
             <a href="index.php" class="active">Home</a>
             <a href="toevoegen.php"> Toevoegen </a>
             <a href="bibliotheek.php"> Bibliotheek </a>
-            <a href="#notities">Notities </a>
+            <a href="notities.PHP">Notities </a>
         </div>
     </nav>
 </head>
@@ -26,18 +26,21 @@
     echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
 
 
-    if (isset($_POST['delete']) && isset($_POST['Notitie_id'])) {
-        $notitie_id = get_post($conn, 'Notitie_id');
-        $query = "DELETE FROM `notitie` WHERE Notitie_id='$notitie_id'";
+    if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
+        $notitie_id = get_post($conn, 'Boek_id');
+        $query = "DELETE FROM `notitie` WHERE `notitie`.`Notitie_id`='$notitie_id'";
+       // DELETE FROM `notitie` WHERE `notitie`.`Notitie_id` = 27
         $result = $conn->query($query);
         if (!$result)
             echo "DELETE failed: $query<br>" .
             $conn->error . "<br><br>";
     }
 
-    if (isset($_POST['Notitie'])) {
+    if (isset($_POST['Notitie']) && isset($_POST['Boek_id'])) {
         $notities = get_post($conn, 'Notitie');
-        $query = "INSERT INTO `notitie`" . "(`Notitie`)" . " VALUES ('" . $notities . "')";
+        $boek_id= get_post($conn, 'Boek_id');
+     //   $query = "INSERT INTO `notitie`" . "(`Notitie`)" . " VALUES ('" . $notities . "')";
+        $query = "INSERT INTO `notitie`" . "(`Notitie_id`, `Notitie`, `Boek_id`)" . " VALUES (NULL,'" .  $notities  . "','" . $boek_id . "')";
         $result = $conn->query($query);
 
         if (!$result)
@@ -51,6 +54,9 @@
          <input type="submit" value="Verzenden">
          </pre></form>
 _END;
+ 
+
+  
 
     $query = "SELECT * FROM `notitie`";
     $result = $conn->query($query);
@@ -71,13 +77,12 @@ _END;
 </pre>
     <form action="index.php" method="post">
     <input type="hidden" name="delete" value="yes">
-    <input type="hidden" name="Notitie_id" value="$row[0]">
+    <input type="hidden" name="Boek_id" value="$row[0]">
     <input type="submit" value="DELETE RECORD"></form>
 _END;
     }
-
-    $result->close();
-    $conn->close();
+        $result->close();
+      $conn->close();
 
     function get_post($conn, $var) {
         return $conn->real_escape_string($_POST[$var]);
