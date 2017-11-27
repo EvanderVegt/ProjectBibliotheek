@@ -38,9 +38,7 @@
 
     <?php
     $conn = connectionDB();    // Call for a PHP function // We can not find it on this page SO it must be on the shared page generalfunctions.php
-    echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
-    echo createTagSelect1($conn, "Boek_id");
-
+ 
     if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
         $notitie_id = get_post($conn, 'Boek_id');
         $query = "DELETE FROM `notitie` WHERE `notitie`.`Notitie_id`='$notitie_id'";
@@ -50,10 +48,11 @@
             $conn->error . "<br><br>";
     }
 
-    if (isset($_POST['Notitie']) or isset($_POST['Boek_id'])) {
+    if (isset($_POST['Notitie'])) {
         $notities = get_post($conn, 'Notitie');
-        $boek_id = get_post($conn, 'Boek_id');
+        $boek_id = get_post($conn, 'boek');
         $query = "INSERT INTO `notitie`" . "(`Notitie_id`, `Notitie`, `Boek_id`)" . " VALUES (NULL,'" . $notities . "', '" . $boek_id . "')";
+        echo $query;
         $result = $conn->query($query);
 
         if (!$result)
@@ -61,13 +60,16 @@
             $conn->error . "<br><br>";
     }
 
-    echo <<<_END
-         <form action="index.php" method="post"><pre>
-         <textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>
-         <input type="submit" value="Verzenden">
-         </pre></form>
+
+        echo "<form action=\"index.php\" method=\"post\"><pre>";
+        echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
+        echo createTagSelect1($conn, "Boek_id");
+
+  
+         echo '<textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>';
+         echo '<input type="submit" value="Verzenden">';
+         echo '</pre></form>';
     
-_END;
 
 
 

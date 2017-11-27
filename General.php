@@ -17,7 +17,7 @@ function createtable($conn) {
     $sql = "SELECT boek.Boek_id, boek.Invoerdatum, boek.Titel, boek.Auteur,
         boek.Isbn, boek.Uitgever, boek.Categorie, boek.Ranking, notitie.Notitie
 FROM boek
-LEFT JOIN notitie ON boek.Boek_id = notitie.Boek_id;";
+LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
     $result = $conn->query($sql);
     echo "<table id=customers>";
     $TR = "<tr>";
@@ -88,13 +88,13 @@ LEFT JOIN notitie ON boek.Boek_id = notitie.Boek_id;";
 }
 
 function createTagSelect($ParamConn) {
-    $sql = "SELECT * FROM `notitie`;";   // Make a query for the DATABASE
+    $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
     //$sql = "SELECT boek.Boek_id, boek.Titel FROM `boek`;";
 
 
     $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
 
-    $eruit = "<select id=eriksselectboek onchange=letsgaan() >";  // assign the <select> openings tag with id and event=functioncall as string  
+    $eruit = "<select id=eriksselectboek onchange=letsgaan() name=boek >";  // assign the <select> openings tag with id and event=functioncall as string  
     for ($x = 0; $x < $erinResultSet->num_rows; $x++) {// count the number of records in the recordset and make sure that the for loops that amount of times
         $row = $erinResultSet->fetch_assoc();  // Get the next record AS an array into the variable row
         $eruit .= "<option value=" . $row['Boek_id'] . ">";   // append new string information with .=
@@ -114,14 +114,14 @@ function createTagSelect1($ParamConn) {
     $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
 
     $eruit = "<select id=eriksselect onchange=letsgo() >";  // assign the <select> openings tag with id and event=functioncall as string  
-    for ($x = 0; $x < $erinResultSet->num_rows; $x++) {// count the number of records in the recordset and make sure that the for loops that amount of times
+   for ($x = 0; $x < $erinResultSet->num_rows; $x++) {// count the number of records in the recordset and make sure that the for loops that amount of times
         $row = $erinResultSet->fetch_assoc();  // Get the next record AS an array into the variable row
-        $eruit .= "<option value=" . $row['Boek_id'] . ">";   // append new string information with .=
+       $eruit .= "<option value=" . $row['Boek_id'] . ">";   // append new string information with .=
         $eruit .= $row['Titel']; // make the option with only the naam out of the record set
         $eruit .= "</option>";
     }
     $eruit .= "</select>"; // <select closing tag
 
-    return $eruit; // return the result
+   return $eruit; // return the result
 }
 ?> 
