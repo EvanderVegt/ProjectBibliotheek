@@ -19,13 +19,19 @@
             <a href="notities.PHP">Notities </a>
         </div>
     </nav>
+ 
 </head>
 
 <body>
-
+         
     <?php
+            
+
+ 
     $conn = connectionDB();    // Call for a PHP function // We can not find it on this page SO it must be on the shared page generalfunctions.php
 
+    //-----Notities verwijderen-------------------------------------------------
+    
     if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
         $notitie_id = get_post($conn, 'Boek_id');
         $query = "DELETE FROM `notitie` WHERE `notitie`.`Notitie_id`='$notitie_id'";
@@ -34,7 +40,8 @@
             echo "DELETE failed: $query<br>" .
             $conn->error . "<br><br>";
     }
-
+    //-----Notities toevoegen---------------------------------------------------
+    
     if (isset($_POST['Notitie'])) {
         $notities = get_post($conn, 'Notitie');
         $boek_id = get_post($conn, 'boek');
@@ -47,16 +54,17 @@
             $conn->error . "<br><br>";
     }
 
-
-    echo "<form action=\"index.php\" method=\"post\"><pre>";
+    //-----Notities (Titel selecteren-Text invoeren en verzenden----------------
+    //-----MySql invoerveld "Titel" instellen op VARCHAR 45---------------------
+    echo "<form id=\"invoerText\" action=\"index.php\" method=\"post\"><pre>";
+    echo '                                                   '
+    . '                                              Kies de titel van een boek  ';
     echo createTagSelect($conn, "Titel"); // THE FUNCTION is being Echoed VERY important because the string is in the function returned NOT echoed // 
-    echo '<textarea  type="text" name="Notitie" cols="50" rows="3" style="width: 300px; height: 50px;" required></textarea><br><br>';
-    echo '<input type="submit" value="Verzenden">';
-    echo '</pre></form>';
-
-
-
-
+    echo '<br>                                                                                        voer een bladzijde nr. en notitie in '
+    . '<textarea type="text" name="Notitie" cols="50" rows="3" style="width: 320px; height: 50px;" required>Bladzijde :                                 Notitie   :</textarea>   ';
+    echo '<br>                                                                                                                                                               <input type="submit" value="Verzenden">';
+    echo '</pre></form>'; 
+  
 
     $query = "SELECT * FROM `notitie`";
     $result = $conn->query($query);
@@ -68,18 +76,19 @@
     for ($j = 0; $j < $rows; ++$j) {
         $result->data_seek($j);
         $row = $result->fetch_array(MYSQLI_NUM);
-
-        echo <<<_END
-<pre>
-    Notitie_id: $row[0]
-    Notitie   : $row[1]
-
-</pre>
-    <form action="index.php" method="post">
-    <input type="hidden" name="delete" value="yes">
-    <input type="hidden" name="Boek_id" value="$row[0]">
-    <input type="submit" value="DELETE RECORD"></form>
-_END;
+//-------Notities weergeven op index.php----------------------------------------
+// echo <<<_END
+//<pre>
+//    Notitie_id: $row[0]
+//    Notitie   : $row[1]
+//
+//</pre>
+//    <form action="index.php" method="post">
+//    <input type="hidden" name="delete" value="yes">
+//    <input type="hidden" name="Boek_id" value="$row[0]">
+//    <input type="submit" value="DELETE RECORD"></form>
+//_END;
+ 
     }
     $result->close();
     $conn->close();
@@ -88,5 +97,6 @@ _END;
         return $conn->real_escape_string($_POST[$var]);
     }
     ?>
+
 </body>
 </html>

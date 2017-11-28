@@ -23,10 +23,10 @@ LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
     $TR = "<tr>";
     for ($x = 0; $x < 1; $x++) {
         echo"<th>";
-        echo"Boek_id";
+        echo"Boeknr.";
         echo"</th>";
         echo"<th>";
-        echo"Invoerdatum";
+        echo"Invoerdatum & tijd";
         echo"</th>";
         echo"<th>";
         echo"Titel";
@@ -90,8 +90,6 @@ LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
 function createTagSelect($ParamConn) {
     $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
 
-
-
     $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
 
     $eruit = "<select id=eriksselectboek onchange=letsgaan() name=boek >";  // assign the <select> openings tag with id and event=functioncall as string  
@@ -105,4 +103,6 @@ function createTagSelect($ParamConn) {
 
     return $eruit; // return the result
 }
+
+
 ?> 

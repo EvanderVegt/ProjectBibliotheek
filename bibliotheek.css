@@ -26,6 +26,9 @@ header::first-letter {
     border: 1px solid #ddd;
     padding: 8px;
 }
+#customers tr {
+    text-align: left;
+}
 
 #customers tr:nth-child(even){background-color: #87daed;}
 #customers tr:nth-child(odd){background-color: #c3edf7;}
@@ -68,5 +71,3 @@ body {background-color: #565b5a;}
 #table.notities{
     padding-top: 20px;
 }
-
-

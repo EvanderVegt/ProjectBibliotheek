@@ -21,6 +21,8 @@
     $conn = connectionDB();  // verbinding
     echo createtable($conn);
     ?> 
+    
+    
 </form>
 
 </html>
