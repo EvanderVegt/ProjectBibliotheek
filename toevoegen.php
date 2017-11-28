@@ -70,7 +70,7 @@
      Uitgever<input type="text" name="Uitgever" required>
     Categorie<input type="text" name="Categorie" required>
       Ranking<input type="text" name="Ranking" required>
-           <input type="submit" value="ADD RECORD">
+           <input class="button" type="submit" value="ADD RECORD">
   </pre></form>
 _END;
 
@@ -99,7 +99,7 @@ Invoerdatum $row[1]
   <form action="toevoegen.php" method="post">
   <input type="hidden" name="delete" value="yes">
   <input type="hidden" name="Boek_id" value="$row[0]">
-  <input type="submit" value="DELETE RECORD"></form>
+  <input class="button" type="submit" value="DELETE RECORD"></form>
 _END;
     }
 
@@ -110,6 +110,7 @@ _END;
         return $conn->real_escape_string($_POST[$var]);
     }
     ?>
+    
 
 </body>
 </html>

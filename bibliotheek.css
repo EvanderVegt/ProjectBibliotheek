@@ -36,11 +36,15 @@ header::first-letter {
     padding: 25px;
     margin: 25px;
 }
-#notities {
-    background-color: whitesmoke;
-    color: black;
-    width: 800px;
 
+.center {
+    margin: auto;
+    width: 60%;
+    border: 1px solid #e8c264;
+    padding: 1px;
+    background-color: #ffffc2;
+    color: black;
+    width: 1200px;
 }
 
 pre {
@@ -86,4 +90,28 @@ body {background-color: #565b5a;}
 
 #table.notities{
     padding-top: 20px;
+}
+
+.button {
+  padding: 2px 15px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: black;
+  background-color: #e8c264;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 3px #999;
+}
+
+.button:hover {
+  background-color: white;
+  color: #e8c264;   
+}
+
+.button:active {
+  background-color: white;
+  box-shadow: 0 5px #f2f2f2;
+  transform: translateY(2px);
 }

@@ -19,6 +19,7 @@
 <body>
     <?php
     $conn = connectionDB();
+      if ($conn->connect_error) die($conn->connect_error);
 
  //------Haalt de data van de Titel uit tafel boek------------------------------
 
@@ -46,7 +47,7 @@
             $result->data_seek($j);
             $row = $result->fetch_array(MYSQLI_NUM);
             ?>
-                <div id="notities">
+                <div id="notities" class="center">
                     
             <?php
             
@@ -55,14 +56,23 @@
                 echo "Notitie   : " . $row[1];
             ?>
 
-                    <form action="index.php" method="post">
+                    <form action="notities.php" method="post">
                         <input type="hidden" name="delete" value="yes">
-                        <input type="hidden" name="Boek_id" value="$row2[2]">
-                        <input type="submit" value="DELETE RECORD">
+                        <input type="hidden" name="Notitie_id" value="$row[0]">
+                        <input class="button" type="submit" value="Notitie verwijden">
                     </form>
             <?php
                  }
             }
+  
+
+              $result->close();
+  $conn->close();
+  
+  function get_post($conn, $var)
+  {
+    return $conn->real_escape_string($_POST[$var]);
+  }
             ?>
                 </div>
 </body>   
