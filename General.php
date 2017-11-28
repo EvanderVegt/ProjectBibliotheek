@@ -26,7 +26,7 @@ LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
         echo"Boeknr.";
         echo"</th>";
         echo"<th>";
-        echo"Invoerdatum & tijd";
+        echo"Invoerdatum";
         echo"</th>";
         echo"<th>";
         echo"Titel";

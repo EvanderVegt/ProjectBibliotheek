@@ -22,16 +22,16 @@
 
  //------Haalt de data van de Titel uit tafel boek------------------------------
 
-    $query = "SELECT * FROM `boek`";
-    $result = $conn->query($query);
-    if (!$result)
+    $query2 = "SELECT * FROM `boek`";
+    $result2 = $conn->query($query2);
+    if (!$result2)
         die("Database access failed: " . $conn->error);
 
-    $rows = $result->num_rows;
+    $rows2 = $result2->num_rows;
 
-    for ($h = 0; $h < $rows; ++$h) {
-        $result->data_seek($h);
-        $row = $result->fetch_array(MYSQLI_NUM);
+    for ($h = 0; $h < $rows2; ++$h) {
+        $result2->data_seek($h);
+        $row2 = $result2->fetch_array(MYSQLI_NUM);
 
  //------Haalt de data van Notitie uit tafel notitie----------------------------   
 
@@ -50,15 +50,14 @@
                     
             <?php
             
-                echo "Titel     : " . $row[2];
+                echo "Titel     : " . $row2[2];
                 echo "Notitie_id: " . $row[0];
                 echo "Notitie   : " . $row[1];
-                
             ?>
 
                     <form action="index.php" method="post">
                         <input type="hidden" name="delete" value="yes">
-                        <input type="hidden" name="Boek_id" value="$row[0]">
+                        <input type="hidden" name="Boek_id" value="$row2[2]">
                         <input type="submit" value="DELETE RECORD">
                     </form>
             <?php

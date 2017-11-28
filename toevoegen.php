@@ -20,16 +20,16 @@
 
 
     <?php
-    $myDate = date("d-m-Y H:i:s");
+    $myDate = date("d-m-Y");
 
     $conn = connectionDB();
 
     if ($conn->connect_error)
         die($conn->connect_error);
 
-    if (isset($_POST['delete']) && isset($_POST['Isbn'])) {
-        $isbn = get_post($conn, 'Isbn');
-        $query = "DELETE FROM `boek` WHERE Isbn='$isbn'";
+    if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
+        $boek_id = get_post($conn, 'Boek_id');
+        $query = "DELETE FROM `boek` WHERE Boek_id='$boek_id'";
         $result = $conn->query($query);
         if (!$result)
             echo "DELETE failed: $query<br>" .
@@ -98,7 +98,7 @@ Invoerdatum $row[1]
   </pre>
   <form action="toevoegen.php" method="post">
   <input type="hidden" name="delete" value="yes">
-  <input type="hidden" name="Isbn" value="$row[4]">
+  <input type="hidden" name="Boek_id" value="$row[0]">
   <input type="submit" value="DELETE RECORD"></form>
 _END;
     }
