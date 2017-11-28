@@ -1,5 +1,6 @@
 <?php include 'General.php';
 ?>
+
 <html>
     <head>
     <header>Bewerken</header>
@@ -109,5 +110,6 @@ _END;
         return $conn->real_escape_string($_POST[$var]);
     }
     ?>
+
 </body>
 </html>

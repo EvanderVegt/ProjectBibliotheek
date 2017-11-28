@@ -36,6 +36,12 @@ header::first-letter {
     padding: 25px;
     margin: 25px;
 }
+#notities {
+    background-color: whitesmoke;
+    color: black;
+    width: 800px;
+
+}
 
 pre {
     color: white;

@@ -2,13 +2,13 @@
 
 function connectionDB() {
 
-    $hostname = 'localhost';            // the credentials of the connection
+    $hostname = 'localhost';           
     $databasenaam = 'projectbibliotheek';
     $username = 'root';
     $password = '';
 
-    $conn = new mysqli($hostname, $username, $password, $databasenaam); // the instantiation of the mysqli object, on object TOTALLY specialised in DATABAS MANAGEMENT
-    return $conn;  // THAT object and connection is given back so that it can be catched at the call.
+    $conn = new mysqli($hostname, $username, $password, $databasenaam); 
+    return $conn; 
 }
 
 function createtable($conn) {
@@ -88,20 +88,20 @@ LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
 }
 
 function createTagSelect($ParamConn) {
-    $sql = "SELECT * FROM `boek`;";   // Make a query for the DATABASE
+    $sql = "SELECT * FROM `boek`;";  
 
-    $erinResultSet = $ParamConn->query($sql); // THe execution of the SQL statement with ->query() on the mysql-object-parameter returns the RECORDSET in the variable ResultSet.
+    $erinResultSet = $ParamConn->query($sql);
 
-    $eruit = "<select id=eriksselectboek onchange=letsgaan() name=boek >";  // assign the <select> openings tag with id and event=functioncall as string  
-    for ($x = 0; $x < $erinResultSet->num_rows; $x++) {// count the number of records in the recordset and make sure that the for loops that amount of times
-        $row = $erinResultSet->fetch_assoc();  // Get the next record AS an array into the variable row
-        $eruit .= "<option value=" . $row['Boek_id'] . ">";   // append new string information with .=
-        $eruit .= $row['Titel']; // make the option with only the naam out of the record set
+    $eruit = "<select id=eriksselectboek onchange=letsgaan() name=boek >";   
+    for ($x = 0; $x < $erinResultSet->num_rows; $x++) {
+        $row = $erinResultSet->fetch_assoc(); 
+        $eruit .= "<option value=" . $row['Boek_id'] . ">";  
+        $eruit .= $row['Titel']; 
         $eruit .= "</option>";
     }
-    $eruit .= "</select>"; // <select closing tag
+    $eruit .= "</select>"; 
 
-    return $eruit; // return the result
+    return $eruit; 
 }
 
 
