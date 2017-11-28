@@ -59,7 +59,7 @@
                     <form action="notities.php" method="post">
                         <input type="hidden" name="delete" value="yes">
                         <input type="hidden" name="Notitie_id" value="$row[0]">
-                        <input class="button" type="submit" value="Notitie verwijden">
+                        <input class="button1" type="submit" value="Notitie verwijden">
                     </form>
             <?php
                  }
