@@ -31,6 +31,9 @@ header::first-letter {
 }
 #laatst {
     background-color: whitesmoke;
+    font-style: oblique;
+    font-weight: bold;
+    color: #04013b;
     color: black;
     width: 300px;
     padding: 25px;
@@ -48,7 +51,7 @@ header::first-letter {
     background-color: #f7f783;
     box-shadow: 0 3px #999;
     color: #04013b;
-    width: 1200px;
+    width: 600px;
 }
 
 pre {
