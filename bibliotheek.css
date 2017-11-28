@@ -29,7 +29,17 @@ header::first-letter {
 #customers tr {
     text-align: left;
 }
+#laatst {
+    background-color: whitesmoke;
+    color: black;
+    width: 300px;
+    padding: 25px;
+    margin: 25px;
+}
 
+pre {
+    color: white;
+  }
 #customers tr:nth-child(even){background-color: #87daed;}
 #customers tr:nth-child(odd){background-color: #c3edf7;}
 
