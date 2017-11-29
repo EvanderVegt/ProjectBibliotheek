@@ -77,16 +77,40 @@
     
          if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo "<br> Op " . $row["Invoerdatum"] . " is als laatst een boek (" . $row['Titel'] . ") " .
+                echo "<br> Op " . $row["Invoerdatum"] . "<br> is als laatst een boek (" . $row['Titel'] . ") " .
                         "<br> van de schrijver " . $row["Auteur"] . " aan de bibliotheek toegevoegd.<br>";
             }
                 } else {
                     echo "0 results";
                         }
+                        
     ?>
             
         </div>
     
+    <?php
+    
+                 //$sql = "SELECT * FROM `boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
+                 $sql = "SELECT * FROM boek INNER JOIN notitie ON boek.Boek_id = notitie.Boek_id ORDER BY `Notitie_id` DESC LIMIT 1";
+             $result = $conn->query($sql);
+    ?>
+    
+        <div id="laatst">
+            
+    <?php
+    
+         if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<br>Het laatst toegevoegde notitie in de Bibliotheek is:<br> " . $row['Notitie'] . " " .
+                        "<br>behorende bij het boek " . $row["Titel"] . ".<br>";
+            }
+                } else {
+                    echo "0 results";
+                        }
+                        
+    ?>
+            
+        </div>
     <?php
     
             $result->close();
