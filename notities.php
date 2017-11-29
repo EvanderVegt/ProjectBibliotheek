@@ -20,23 +20,14 @@
     <?php
     $conn = connectionDB();
       if ($conn->connect_error) die($conn->connect_error);
+      
+      
+      
 
- //------Haalt de data van de Titel uit tafel boek------------------------------
-
-    $query2 = "SELECT * FROM `boek`";
-    $result2 = $conn->query($query2);
-    if (!$result2)
-        die("Database access failed: " . $conn->error);
-
-    $rows2 = $result2->num_rows;
-
-    for ($h = 0; $h < $rows2; ++$h) {
-        $result2->data_seek($h);
-        $row2 = $result2->fetch_array(MYSQLI_NUM);
 
  //------Haalt de data van Notitie uit tafel notitie----------------------------   
 
-        $query = "SELECT * FROM `notitie`";
+        $query = "SELECT * FROM boek INNER JOIN notitie ON boek.Boek_id = notitie.Boek_id";
         $result = $conn->query($query);
         if (!$result)
             die("Database access failed: " . $conn->error);
@@ -51,22 +42,21 @@
                     
             <?php
             
-                echo "Titel     : " . $row2[2];
-                echo "Notitie_id: " . $row[0];
-                echo "Notitie   : " . $row[1];
+                echo "Titel     : " . $row[3];
+                echo "Boek_id   : " . $row[2];
+                echo "Notitie   : " . $row[9];
             ?>
 
                     <form action="notities.php" method="post">
                         <input type="hidden" name="delete" value="yes">
-                        <input type="hidden" name="Notitie_id" value="$row[0]">
+                        <input type="hidden" name="Boek_id" value="$row[0]">
                         <input class="button1" type="submit" value="Notitie verwijden">
                     </form>
             <?php
                  }
-            }
+        //    }
   
-
-              $result->close();
+    $result->close();
   $conn->close();
   
   function get_post($conn, $var)

@@ -20,7 +20,7 @@
 
 
     <?php
-    $myDate = date("d-m-Y");
+    $myDate = date("d-m-Y H:i:s");
 
     $conn = connectionDB();
 

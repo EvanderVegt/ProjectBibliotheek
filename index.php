@@ -58,7 +58,9 @@
             . '<textarea type="text" name="Notitie" cols="50" rows="3" style="width:'
                     . ' 320px; height: 50px;" required>Bladzijde : '
                     . '                                Notitie   :</textarea>   ';
-            echo '<br>                                                                                                                                                               <input class="button" type="submit" value="Verzenden">';
+            echo '<br>                                                                                '
+            . '                                                                           '
+                    . '    <input class="button" type="submit" value="Verzenden">';
             echo '</pre></form>';
     ?>
         </div>
