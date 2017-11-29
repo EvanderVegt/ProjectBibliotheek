@@ -5,7 +5,8 @@
 <html>
     <head>
     <header>Bewerken</header>
-    <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
+        <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
+            <script src="javascript.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <title>Toevoegen</title>
     <nav>
@@ -33,7 +34,7 @@
         print_r($titel);
         $query = "DELETE FROM `boek` WHERE Titel='$titel'";
         $result = $conn->query($query);
-        print_r($titel);
+        //print_r($titel);
         if (!$result)
             echo "DELETE failed: $query<br>" .
             $conn->error . "<br><br>";
@@ -105,20 +106,15 @@ _END;
     
       <div id="verwijderBoek">
  <?PHP
-  echo $row[2];
-  echo '<form action="toevoegen.php" method="post">';
+  echo createTagSelect($conn, "Titel");
+  print_r($row);
+  echo '<form name="eriksselectboek" action="toevoegen.php" method="post">';
   echo '<input type="hidden" name="delete" value="yes">';
-  echo "<input type='hidden' name='Titel' value='" . $row[2] ."'>"; 
-?>              
-    <?php     
-        echo createTagSelect($conn, "Titel");
-        //echo '<input type="submit" value="Verzenden">';
-     ?>
-     <?php     
+  echo "<input type='hidden' name='Titel' value='" . $row['2'] ."'>"; 
   echo '<input class="button" type="submit" value="Verwijder boek"></form>';
      ?>   
      </div>
-    <?php
+ <?php
  
    }
 
