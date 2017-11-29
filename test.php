@@ -76,3 +76,41 @@ _END;
     return $conn->real_escape_string($_POST[$var]);
   }
 ?>
+
+
+
+
+//        for ($j = 0; $j < $rows; ++$j) {
+//            $result->data_seek($j);
+//            $row = $result->fetch_array(MYSQLI_NUM);
+//            ?>
+                <div id="notities" class="center">
+                    
+            //<?php
+//            
+//                echo "Titel     : " . $row[2];
+//                echo "Notitie_id: " . $row[8];
+//                echo "Notitie   : " . $row[9];
+//            ?>
+
+                    <form action="notities.php" method="post">
+                        <input type="hidden" name="delete" value="yes">
+                        <input type="hidden" name="Notitie_id" value="$row[8]">
+                        <input class="button1" type="submit" value="Notitie verwijden">
+                    </form>
+            //<?php
+//                 }
+//     
+//  
+//    $result->close();
+//  $conn->close();
+//  
+//  function get_post($conn, $var)
+//  {
+//    return $conn->real_escape_string($_POST[$var]);
+//  }
+//            ?>
+                </div>
+</body>   
+</html>
+

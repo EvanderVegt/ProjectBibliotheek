@@ -21,9 +21,24 @@
     $conn = connectionDB();
       if ($conn->connect_error) die($conn->connect_error);
       
-      
-      
+          if (isset($_POST['delete']) && isset($_POST['Notitie_id'])) {
+        $notitie_id = get_post($conn, 'Notitie_id');
+        print_r($notitie_id);
+        //$query = "DELETE FROM `notitie` WHERE Notitie_id='$notitie_id'";
+       // $query = "DELETE FROM boek INNER JOIN notitie ON boek.Boek_id = notitie.Boek_id WHERE notitie.Notitie_id='$notitie_id'";
+        $query = "DELETE notitie FROM boek INNER JOIN notitie ON boek.Boek_id = notitie.Boek_id WHERE notitie.Notitie_id='$notitie_id'";
 
+
+
+        $result = $conn->query($query);
+        if (!$result)
+            echo "DELETE failed: $query<br>" .
+            $conn->error . "<br><br>";
+    }
+
+      
+      
+      
 
  //------Haalt de data van Notitie uit tafel notitie----------------------------   
 
@@ -33,38 +48,38 @@
             die("Database access failed: " . $conn->error);
 
         $rows = $result->num_rows;
+        
+        
+            for ($j = 0; $j < $rows; ++$j) {
+        $result->data_seek($j);
+        $row = $result->fetch_array(MYSQLI_NUM);
 
-        for ($j = 0; $j < $rows; ++$j) {
-            $result->data_seek($j);
-            $row = $result->fetch_array(MYSQLI_NUM);
-            ?>
-                <div id="notities" class="center">
-                    
-            <?php
-            
-                echo "Titel     : " . $row[3];
-                echo "Boek_id   : " . $row[2];
-                echo "Notitie   : " . $row[9];
-            ?>
 
-                    <form action="notities.php" method="post">
-                        <input type="hidden" name="delete" value="yes">
-                        <input type="hidden" name="Boek_id" value="$row[0]">
-                        <input class="button1" type="submit" value="Notitie verwijden">
-                    </form>
-            <?php
-                 }
-        //    }
-  
+        echo <<<_END
+  <pre><div id="notities" class="center">
+
+     Titel $row[2]
+Notitie_id $row[8]
+   Notitie $row[9]
+
+  </pre>
+  <form action="notities.php" method="post">
+  <input type="hidden" name="delete" value="yes">
+  <input type="hidden" name="Notitie_id" value="$row[8]">
+  <input class="button" type="submit" value="DELETE RECORD"></form></div>
+
+_END;
+    }
+
     $result->close();
-  $conn->close();
-  
-  function get_post($conn, $var)
-  {
-    return $conn->real_escape_string($_POST[$var]);
-  }
-            ?>
-                </div>
-</body>   
+    $conn->close();
+
+    function get_post($conn, $var) {
+        return $conn->real_escape_string($_POST[$var]);
+    }
+    ?>
+    
+
+</body>
 </html>
 
