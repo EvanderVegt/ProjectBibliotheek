@@ -23,7 +23,7 @@
       
         if (isset($_POST['delete']) && isset($_POST['Notitie_id'])) {
         $notitie_id = get_post($conn, 'Notitie_id');
-        //print_r($notitie_id);
+        print_r($notitie_id);
         $query = "DELETE notitie FROM boek INNER JOIN notitie ON boek.Boek_id"
                 . " = notitie.Boek_id WHERE notitie.Notitie_id='$notitie_id'";
 

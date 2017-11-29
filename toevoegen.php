@@ -28,10 +28,12 @@
     if ($conn->connect_error)
         die($conn->connect_error);
 
-    if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
-        $boek_id = get_post($conn, 'Boek_id');
-        $query = "DELETE FROM `boek` WHERE Boek_id='$boek_id'";
+    if (isset($_POST['delete']) && isset($_POST['Titel'])) {
+        $titel = get_post($conn, 'Titel');
+        print_r($titel);
+        $query = "DELETE FROM `boek` WHERE Titel='$titel'";
         $result = $conn->query($query);
+        print_r($titel);
         if (!$result)
             echo "DELETE failed: $query<br>" .
             $conn->error . "<br><br>";
@@ -71,7 +73,7 @@
      Uitgever<input type="text" name="Uitgever" required>
     Categorie<input type="text" name="Categorie" required>
       Ranking<input type="text" name="Ranking" required>
-           <input class="button" type="submit" value="ADD RECORD">
+           <input class="button" type="submit" value="Voeg boek toe">
   </pre></form>
 _END;
 
@@ -97,12 +99,28 @@ Invoerdatum $row[1]
   Categorie $row[6]
     Ranking $row[7]
   </pre>
-  <form action="toevoegen.php" method="post">
-  <input type="hidden" name="delete" value="yes">
-  <input type="hidden" name="Boek_id" value="$row[0]">
-  <input class="button" type="submit" value="DELETE RECORD"></form>
 _END;
-    }
+    ?>
+    
+    
+      <div id="verwijderBoek">
+ <?PHP
+  echo $row[2];
+  echo '<form action="toevoegen.php" method="post">';
+  echo '<input type="hidden" name="delete" value="yes">';
+  echo "<input type='hidden' name='Titel' value='" . $row[2] ."'>"; 
+?>              
+    <?php     
+        echo createTagSelect($conn, "Titel");
+        //echo '<input type="submit" value="Verzenden">';
+     ?>
+     <?php     
+  echo '<input class="button" type="submit" value="Verwijder boek"></form>';
+     ?>   
+     </div>
+    <?php
+ 
+   }
 
     $result->close();
     $conn->close();
@@ -115,3 +133,10 @@ _END;
 
 </body>
 </html>
+
+
+
+
+
+
+ 

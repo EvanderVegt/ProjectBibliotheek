@@ -90,7 +90,6 @@
     
     <?php
     
-                 //$sql = "SELECT * FROM `boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
                  $sql = "SELECT * FROM boek INNER JOIN notitie ON boek.Boek_id = notitie.Boek_id ORDER BY `Notitie_id` DESC LIMIT 1";
              $result = $conn->query($sql);
     ?>

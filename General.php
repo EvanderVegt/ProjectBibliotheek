@@ -100,7 +100,7 @@ function createTagSelect($ParamConn) {
         $eruit .= "</option>";
     }
     $eruit .= "</select>"; 
-
+  // print_r($erinResultSet);
     return $eruit; 
 }
 
