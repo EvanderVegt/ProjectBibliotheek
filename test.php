@@ -6,7 +6,7 @@
   if (isset($_POST['delete']) && isset($_POST['isbn']))
   {
     $isbn   = get_post($conn, 'isbn');
-    $query  = "DELETE FROM classics WHERE isbn='$isbn'";
+    $query  = "DELETE FROM evdv_classics WHERE isbn='$isbn'";
     $result = $conn->query($query);
   	if (!$result) echo "DELETE failed: $query<br>" .
       $conn->error . "<br><br>";
@@ -23,7 +23,7 @@
     $category = get_post($conn, 'category');
     $year     = get_post($conn, 'year');
     $isbn     = get_post($conn, 'isbn');
-    $query    = "INSERT INTO classics VALUES" .
+    $query    = "INSERT INTO evdv_classics VALUES" .
       "('$author', '$title', '$category', '$year', '$isbn')";
     $result   = $conn->query($query);
 
@@ -42,7 +42,7 @@
   </pre></form>
 _END;
 
-  $query  = "SELECT * FROM classics";
+  $query  = "SELECT * FROM evdv_classics";
   $result = $conn->query($query);
   if (!$result) die ("Database access failed: " . $conn->error);
 

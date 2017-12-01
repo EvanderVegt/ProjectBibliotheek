@@ -24,8 +24,8 @@
         if (isset($_POST['delete']) && isset($_POST['Notitie_id'])) {
         $notitie_id = get_post($conn, 'Notitie_id');
         print_r($notitie_id);
-        $query = "DELETE notitie FROM boek INNER JOIN notitie ON boek.Boek_id"
-                . " = notitie.Boek_id WHERE notitie.Notitie_id='$notitie_id'";
+        $query = "DELETE evdv_notitie FROM evdv_boek INNER JOIN notitie ON evdv_boek.Boek_id"
+                . " = evdv_notitie.Boek_id WHERE evdv_notitie.Notitie_id='$notitie_id'";
 
         $result = $conn->query($query);
         if (!$result)
@@ -37,7 +37,7 @@
 
  //------Haalt de data van Notitie uit tafel notitie----------------------------   
 
-        $query = "SELECT * FROM boek INNER JOIN notitie ON boek.Boek_id = notitie.Boek_id";
+        $query = "SELECT * FROM evdv_boek INNER JOIN evdv_notitie ON evdv_boek.Boek_id = evdv_notitie.Boek_id";
         $result = $conn->query($query);
         if (!$result)
             die("Database access failed: " . $conn->error);

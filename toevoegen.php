@@ -32,7 +32,7 @@
     if (isset($_POST['delete']) && isset($_POST['Titel'])) {
         $titel = get_post($conn, 'Titel');
         print_r($titel);
-        $query = "DELETE FROM `boek` WHERE Titel='$titel'";
+        $query = "DELETE FROM `evdv_boek` WHERE Titel='$titel'";
         $result = $conn->query($query);
         //print_r($titel);
         if (!$result)
@@ -52,7 +52,7 @@
         $uitgever = get_post($conn, 'Uitgever');
         $categorie = get_post($conn, 'Categorie');
         $ranking = get_post($conn, 'Ranking');
-        $query = "INSERT INTO `boek`"
+        $query = "INSERT INTO `evdv_boek`"
                 . "(`Invoerdatum`, `Titel`, `Auteur`, `Isbn`, `Uitgever`, `Categorie`, `Ranking`)"
                 . " VALUES ('" . $myDate . "','" . $titel . "','" . $auteur . "','"
                 . $isbn . "','" . $uitgever . "','" . $categorie . "','" . $ranking . "')";
@@ -78,7 +78,7 @@
   </pre></form>
 _END;
 
-    $query = "SELECT * FROM `boek`";
+    $query = "SELECT * FROM `evdv_boek`";
     $result = $conn->query($query);
     if (!$result)
         die("Database access failed: " . $conn->error);

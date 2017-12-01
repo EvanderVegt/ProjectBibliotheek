@@ -30,7 +30,7 @@
         if (isset($_POST['Notitie'])) {
             $notities = get_post($conn, 'Notitie');
             $boek_id = get_post($conn, 'boek');
-            $query = "INSERT INTO `notitie`" . "(`Notitie_id`, `Notitie`, `Boek_id`)"
+            $query = "INSERT INTO `evdv_notitie`" . "(`Notitie_id`, `Notitie`, `Boek_id`)"
                 . " VALUES (NULL,'" . $notities . "', '" . $boek_id . "')";
             
                 echo $query;
@@ -68,7 +68,7 @@
     
     <?php
     
-             $sql = "SELECT * FROM `boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
+             $sql = "SELECT * FROM `evdv_boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
              $result = $conn->query($sql);
     ?>
     
@@ -91,7 +91,7 @@
     
     <?php
     
-                 $sql = "SELECT * FROM boek INNER JOIN notitie ON boek.Boek_id = notitie.Boek_id ORDER BY `Notitie_id` DESC LIMIT 1";
+                 $sql = "SELECT * FROM evdv_boek INNER JOIN evdv_notitie ON evdv_boek.Boek_id = evdv_notitie.Boek_id ORDER BY `Notitie_id` DESC LIMIT 1";
              $result = $conn->query($sql);
     ?>
     

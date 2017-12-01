@@ -14,10 +14,10 @@ function connectionDB() {
 function createtable($conn) {
 
 
-    $sql = "SELECT boek.Boek_id, boek.Invoerdatum, boek.Titel, boek.Auteur,
-        boek.Isbn, boek.Uitgever, boek.Categorie, boek.Ranking, notitie.Notitie
-FROM boek
-LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
+    $sql = "SELECT evdv_boek.Boek_id, evdv_boek.Invoerdatum, evdv_boek.Titel, evdv_boek.Auteur,
+        evdv_boek.Isbn, evdv_boek.Uitgever, evdv_boek.Categorie, evdv_boek.Ranking, evdv_notitie.Notitie
+FROM evdv_boek
+LEFT JOIN evdv_notitie ON evdv_boek.Boek_id = evdv_notitie.boek_id;";
     $result = $conn->query($sql);
     echo "<table id=customers>";
     $TR = "<tr>";
@@ -88,7 +88,7 @@ LEFT JOIN notitie ON boek.Boek_id = notitie.boek_id;";
 }
 
 function createTagSelect($ParamConn) {
-    $sql = "SELECT * FROM `boek`;";  
+    $sql = "SELECT * FROM `evdv_boek`;";  
 
     $erinResultSet = $ParamConn->query($sql);
 
