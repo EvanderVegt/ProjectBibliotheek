@@ -1,62 +1,28 @@
 <?php include 'General.php';
         $conn = connectionDB();
 ?>
+
+
 <html>
     <head>
-        <style>
-            #layout{
-                width:100%;
-                height:100px;
-            }
-            #linker{
-                width:50%;
-            }
-            #rechter{
-                
-            }
-        </style>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Bibliotheek info</title>
+                    <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
+                    <script src="javascript.js" type="text/javascript"></script>
+                        <nav>
+                            <header>Bibliotheek info Pagina</header>
+                                <div class="topnav" id="myTopnav">
+                                    <a href="index.php" class="active">Home</a>
+                                    <a href="toevoegen.php"> Toevoegen </a>
+                                    <a href="bibliotheek.php"> Bibliotheek </a>
+                                    <a href="notities.PHP">Notities </a>
+                                </div>
+                        </nav>
     </head>
-    <body>
-        <table id="layout" border="1">
-            
-            <tr><td id="linker">
-                
-                    
-                    
-   <?php
-    
-             $sql = "SELECT * FROM `evdv_boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
-             $result = $conn->query($sql);
-    ?>
-    
-        <div id="laatst">
-            
+<body text="white">
+
     <?php
-    
-         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<br> Op " . $row["Invoerdatum"] . "<br> is als laatst een boek (" . $row['Titel'] . ") " .
-                        "<br> van de schrijver " . $row["Auteur"] . " aan de bibliotheek toegevoegd.<br>";
-            }
-                } else {
-                    echo "0 results";
-                        }
-                        
-    ?>
-            
-        </div>                  
-                    
-                    
-                    
-                    
-                </td>
-                
-                
-                
-                <td id="rechter">
-                    
-                    
-   <?php
     
 
 
@@ -99,14 +65,32 @@
                     . '    <input class="button" type="submit" value="Verzenden">';
             echo '</pre></form>';
     ?>
-        </div>                 
-                    
-                    
-                    
-                    
-                </td></tr>
-            <tr><td>
-                  <?php
+        </div>
+    
+    <?php
+    
+             $sql = "SELECT * FROM `evdv_boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
+             $result = $conn->query($sql);
+    ?>
+    
+        <div id="laatst">
+            
+    <?php
+    
+         if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<br> Op " . $row["Invoerdatum"] . "<br> is als laatst een boek (" . $row['Titel'] . ") " .
+                        "<br> van de schrijver " . $row["Auteur"] . " aan de bibliotheek toegevoegd.<br>";
+            }
+                } else {
+                    echo "0 results";
+                        }
+                        
+    ?>
+            
+        </div>
+    
+    <?php
     
                  $sql = "SELECT * FROM evdv_boek INNER JOIN evdv_notitie ON evdv_boek.Boek_id = evdv_notitie.Boek_id ORDER BY `Notitie_id` DESC LIMIT 1";
              $result = $conn->query($sql);
@@ -128,15 +112,7 @@
     ?>
             
         </div>
-                </td>
-                
-                
-                
-                
-                <td></td></tr>
-          
-        </table>
-            <?php
+    <?php
     
             $result->close();
             $conn->close();
@@ -148,6 +124,4 @@
 
 </body>
 </html>
-
- 
 

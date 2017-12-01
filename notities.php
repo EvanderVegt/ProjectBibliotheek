@@ -17,15 +17,19 @@
                         </nav>
     </head>
 <body>
+    
+    </body>
+</html>
+
     <?php
     $conn = connectionDB();
       if ($conn->connect_error) die($conn->connect_error);
       
         if (isset($_POST['delete']) && isset($_POST['Notitie_id'])) {
         $notitie_id = get_post($conn, 'Notitie_id');
-        print_r($notitie_id);
-        $query = "DELETE evdv_notitie FROM evdv_boek INNER JOIN notitie ON evdv_boek.Boek_id"
+        $query = "DELETE evdv_notitie FROM evdv_boek INNER JOIN evdv_notitie ON evdv_boek.Boek_id"
                 . " = evdv_notitie.Boek_id WHERE evdv_notitie.Notitie_id='$notitie_id'";
+
 
         $result = $conn->query($query);
         if (!$result)
@@ -58,7 +62,7 @@ Notitie_id :$row[8]
   </pre>
   <form action="notities.php" method="post">
   <input type="hidden" name="delete" value="yes">
-  <input type="hidden" name="Notitie_id" value='"$row[8]"'>
+  <input type="hidden" name="Notitie_id" value="$row[8]">
   <input class="button" type="submit" value="Verwijderen"></form></div>
 
 _END;
@@ -73,6 +77,4 @@ _END;
     ?>
     
 
-</body>
-</html>
 

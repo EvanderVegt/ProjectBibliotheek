@@ -1,7 +1,6 @@
 <?php include 'General.php';
+        $conn = connectionDB();
 ?>
-
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -18,12 +17,69 @@
                                     <a href="notities.PHP">Notities </a>
                                 </div>
                         </nav>
-    </head>
-<body text="white">
+ 
 
+
+
+        <style>
+            #layout{
+                width:100%;
+                height:100px;
+            }
+            #linker{
+                width:50%;
+            }
+            #rechter{
+                
+            }
+        </style>
+    </head>
+    <body>
+        
+        
+        <body text="white">
+        <table id="layout" border="0">
+            
+            <tr><td id="linker">
+                
+                    
+                    
+   <?php
+    
+             $sql = "SELECT * FROM `evdv_boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
+             $result = $conn->query($sql);
+    ?>
+    
+        <div id="laatst">
+            
     <?php
     
-        $conn = connectionDB();
+         if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<br> Op " . $row["Invoerdatum"] . "<br> is als laatst een boek (" . $row['Titel'] . ") " .
+                        "<br> van de schrijver " . $row["Auteur"] . " aan de bibliotheek toegevoegd.<br>";
+            }
+                } else {
+                    echo "0 results";
+                        }
+                        
+    ?>
+            
+        </div>                  
+                    
+                    
+                    
+                    
+                </td>
+                
+                
+                
+                <td id="rechter">
+                    
+                    
+   <?php
+    
+
 
 //-----Notities toevoegen-------------------------------------------------------
 
@@ -50,46 +106,28 @@
 //-----Notities (Titel selecteren-Text invoeren en verzenden--------------------
 //-----MySql invoerveld "Titel" instellen op VARCHAR 45-------------------------
 
-            echo "<form id=\"invoerText\" action=\"index.php\" method=\"post\"><pre>";
-            echo '                                                   '
-            . '                                              Kies de titel van een boek  ';
+            echo "<form id=\"invoerText\" action=\"index.php\" method=\"POST\"><pre>";
+            echo '    '
+            . '                                Kies de titel van een boek  ';
             echo createTagSelect($conn, "Titel");
-            echo '<br>                                                               '
+            echo '<br>  '
             . '                         voer een bladzijde nr. en notitie in '
             . '<textarea type="text" name="Notitie" cols="50" rows="3" style="width:'
                     . ' 320px; height: 50px;" required>Bladzijde : '
                     . '                                Notitie   :</textarea>   ';
-            echo '<br>                                                                                '
+            echo '<br>                 '
             . '                                                                           '
                     . '    <input class="button" type="submit" value="Verzenden">';
             echo '</pre></form>';
     ?>
-        </div>
-    
-    <?php
-    
-             $sql = "SELECT * FROM `evdv_boek` ORDER BY `Invoerdatum` DESC LIMIT 1";
-             $result = $conn->query($sql);
-    ?>
-    
-        <div id="laatst">
-            
-    <?php
-    
-         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<br> Op " . $row["Invoerdatum"] . "<br> is als laatst een boek (" . $row['Titel'] . ") " .
-                        "<br> van de schrijver " . $row["Auteur"] . " aan de bibliotheek toegevoegd.<br>";
-            }
-                } else {
-                    echo "0 results";
-                        }
-                        
-    ?>
-            
-        </div>
-    
-    <?php
+        </div>                 
+                    
+                    
+                    
+                    
+                </td></tr>
+            <tr><td>
+                  <?php
     
                  $sql = "SELECT * FROM evdv_boek INNER JOIN evdv_notitie ON evdv_boek.Boek_id = evdv_notitie.Boek_id ORDER BY `Notitie_id` DESC LIMIT 1";
              $result = $conn->query($sql);
@@ -111,7 +149,15 @@
     ?>
             
         </div>
-    <?php
+                </td>
+                
+                
+                
+                
+                <td></td></tr>
+          
+        </table>
+            <?php
     
             $result->close();
             $conn->close();
@@ -123,3 +169,6 @@
 
 </body>
 </html>
+
+ 
+
