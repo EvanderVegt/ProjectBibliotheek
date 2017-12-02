@@ -2,13 +2,13 @@
 
 function connectionDB() {
 
-    $hostname = 'localhost';           
+    $hostname = 'localhost';
     $databasenaam = 'projectbibliotheek';
     $username = 'root';
     $password = '';
 
-    $conn = new mysqli($hostname, $username, $password, $databasenaam); 
-    return $conn; 
+    $conn = new mysqli($hostname, $username, $password, $databasenaam);
+    return $conn;
 }
 
 function createtable($conn) {
@@ -88,22 +88,18 @@ LEFT JOIN evdv_notitie ON evdv_boek.Boek_id = evdv_notitie.boek_id;";
 }
 
 function createTagSelect($ParamConn) {
-    $sql = "SELECT * FROM `evdv_boek`;";  
+    $sql = "SELECT * FROM `evdv_boek`;";
 
     $erinResultSet = $ParamConn->query($sql);
 
-    $eruit = "<select id=eriksselectboek onchange=letsgaan() name=boek >";   
+    $eruit = "<select id=eriksselectboek onchange=letsgaan() name=boek >";
     for ($x = 0; $x < $erinResultSet->num_rows; $x++) {
-        $row = $erinResultSet->fetch_assoc(); 
-        $eruit .= "<option value=" . $row['Boek_id'] . ">";  
-        $eruit .= $row['Titel']; 
+        $row = $erinResultSet->fetch_assoc();
+        $eruit .= "<option value=" . $row['Boek_id'] . ">";
+        $eruit .= $row['Titel'];
         $eruit .= "</option>";
     }
-    $eruit .= "</select>"; 
-     return $eruit; 
+    $eruit .= "</select>";
+    return $eruit;
 }
-
-
-
-
 ?> 

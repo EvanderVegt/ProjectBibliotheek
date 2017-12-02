@@ -56,12 +56,12 @@ header::first-letter {
 
 pre {
     color: white;
-  }
+}
 #customers tr:nth-child(even){background-color: #87daed;}
 #customers tr:nth-child(odd){background-color: #c3edf7;}
 
 #customers tr:hover {background-color: #687677;
-    color: white;
+                     color: white;
 }
 #customers th {
     padding-top: 12px;
@@ -85,8 +85,8 @@ body {background-color: #565b5a;}
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    
-    
+
+
     font-size: 17px;
 }
 
@@ -100,49 +100,49 @@ body {background-color: #565b5a;}
 }
 
 .button {
-  padding: 2px 15px;
-  font-size: 12px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: black;
-  background-color: #e8c264;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 3px #999;
+    padding: 2px 15px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: #e8c264;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 3px #999;
 }
 
 .button:hover {
-  background-color: white;
-  color: #e8c264;   
+    background-color: white;
+    color: #e8c264;   
 }
 
 .button:active {
-  background-color: white;
-  box-shadow: 0 5px #f2f2f2;
-  transform: translateY(2px);
+    background-color: white;
+    box-shadow: 0 5px #f2f2f2;
+    transform: translateY(2px);
 }
 
 .button1 {
-  padding: 2px 15px;
-  font-size: 12px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: black;
-  background-color: #fce718;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 3px #999;
+    padding: 2px 15px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: #fce718;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 3px #999;
 }
 
 .button1:hover {
-  background-color: #f7f783;
-  color: black;   
+    background-color: #f7f783;
+    color: black;   
 }
 
 .button1:active {
-  background-color: #c3edf7;
-  box-shadow: 0 5px #f7f783;
-  transform: translateY(2px);
+    background-color: #c3edf7;
+    box-shadow: 0 5px #f7f783;
+    transform: translateY(2px);
 }
