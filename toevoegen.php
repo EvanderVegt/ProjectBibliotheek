@@ -25,7 +25,7 @@ $conn = connectionDB();
             height:100px;
         }
         #linker{
-            width:50%;
+            width:30%;
         }
         #rechter{
 
@@ -36,7 +36,7 @@ $conn = connectionDB();
     <table id="layout" border="0">
 
 
-        <tr><td id="linker">
+        <tr><td id="linker">        
                 <?PHP
                 if (isset($_POST['Titel']) &&
                         isset($_POST['Auteur']) &&
@@ -76,8 +76,11 @@ $conn = connectionDB();
   </pre></form>
 _END;
                 ?>  
-            </td><td id="rechter">
-
+                
+            </td><td></td></tr>
+                        <tr><td id="boek">
+                                
+                      
                 <?PHP
                 if (isset($_POST['delete']) && isset($_POST['Titel'])) {
                     $titel = get_post($conn, 'Titel');
@@ -98,13 +101,14 @@ _END;
                     $row = $result->fetch_array(MYSQLI_NUM);
                     ?>
 
-                </td></tr>
-            <tr><td>
+               <tr><td class="center">  
+                           
                     <?PHP
+                    
                     echo <<<_END
   <pre>
-      Titel $row[2]
-     Auteur $row[3]
+      Titel: $row[2]
+     Auteur: $row[3]
  </pre>
 _END;
 
@@ -121,7 +125,7 @@ _END;
                     return $conn->real_escape_string($_POST[$var]);
                 }
                 ?>              
-
+                            </td></tr>           
 
             </td><td>
 

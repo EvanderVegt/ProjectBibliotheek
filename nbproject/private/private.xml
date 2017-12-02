@@ -4,10 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/Bibliotheek/toevoegen.php</file>
+            <file>file:/C:/xampp/htdocs/Bibliotheek/bibliotheek.php</file>
             <file>file:/C:/xampp/htdocs/Bibliotheek/bibliotheek.css</file>
             <file>file:/C:/xampp/htdocs/Bibliotheek/notities.php</file>
-            <file>file:/C:/xampp/htdocs/Bibliotheek/index.php</file>
             <file>file:/C:/xampp/htdocs/Bibliotheek/General.php</file>
+            <file>file:/C:/xampp/htdocs/Bibliotheek/index.php</file>
+            <file>file:/C:/xampp/htdocs/Bibliotheek/javascript.js</file>
         </group>
     </open-files>
 </project-private>

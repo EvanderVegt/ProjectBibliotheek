@@ -29,7 +29,7 @@ header::first-letter {
 #customers tr {
     text-align: left;
 }
-#laatst {
+#laatst  {
     background-color: whitesmoke;
     font-style: oblique;
     font-weight: bold;
@@ -54,7 +54,15 @@ header::first-letter {
     width: 600px;
 }
 
-pre {
+#boek {
+    background-color: #bf8846;
+    font-style: oblique;
+    font-weight: bold;
+    color: black
+}
+
+
+.pre {
     color: white;
 }
 #customers tr:nth-child(even){background-color: #87daed;}
