@@ -22,7 +22,7 @@ $conn = connectionDB();
     <style>
         #layout{
             width:100%;
-            height:200px;
+            height:400px;
         }
         #linker{
             width:50%;
@@ -79,6 +79,15 @@ _END;
             </td><td id="rechter">
 
                 <?PHP
+                if (isset($_POST['delete']) && isset($_POST['Titel'])) {
+                    $titel = get_post($conn, 'Titel');
+                    $query = "DELETE FROM `evdv_boek` WHERE Titel='$titel'";
+                    $result = $conn->query($query);
+                    if (!$result)
+                        echo "DELETE failed: $query<br>" .
+                        $conn->error . "<br><br>";
+                }
+
                 $query = "SELECT * FROM `evdv_boek`";
                 $result = $conn->query($query);
                 if (!$result)
@@ -87,31 +96,34 @@ _END;
                 for ($j = 0; $j < $rows; ++$j) {
                     $result->data_seek($j);
                     $row = $result->fetch_array(MYSQLI_NUM);
+                    ?>
+
+                </td></tr>
+            <tr><td>
+                    <?PHP
+                    echo <<<_END
+  <pre>
+      Titel $row[2]
+     Auteur $row[3]
+ </pre>
+_END;
+
+                    echo '<form name="eriksselectboek" action="toevoegen.php" method="post">';
+                    echo '<input type="hidden" name="delete" value="yes">';
+                    echo "<input type='hidden' name='Titel' value='" . $row['2'] . "'>";
+                    echo '<input class="button" type="submit" value="Verwijder boek"></form>';
                 }
-                if (isset($_POST['delete']) && isset($_POST['Boek_id'])) {
-                    $titel = get_post($conn, 'Boek_id');
-                    $query = "DELETE FROM `evdv_boek` WHERE Boek_id='$titel'";
-                    $result = $conn->query($query);
-                    if (!$result)
-                        echo "DELETE failed: $query<br>" .
-                        $conn->error . "<br><br>";
-                }
 
-                echo "<form id=\"deleteBoek\" name=\"eriksselectboek\" action=\"toevoegen.php\" method=\"POST\">";
-                echo createTagSelect($conn, "Titel");
-                echo '<input type="hidden" name="delete" value="yes">';
-                echo "<input type='hidden' name='Boek_id' value='" . $row['0'] . "'>";
-                echo '<input class="button" type="submit" value="Verwijder boek"></form>';
-
-
-
-                //$result->close();
+                $result->close();
                 $conn->close();
 
                 function get_post($conn, $var) {
                     return $conn->real_escape_string($_POST[$var]);
                 }
-                ?>
+                ?>              
+
+
+            </td><td>
 
             </td></tr>
 
