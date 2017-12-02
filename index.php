@@ -89,7 +89,7 @@
             $query = "INSERT INTO `evdv_notitie`" . "(`Notitie_id`, `Notitie`, `Boek_id`)"
                 . " VALUES (NULL,'" . $notities . "', '" . $boek_id . "')";
             
-                echo $query;
+                //echo $query;
                 
                     $result = $conn->query($query);
 

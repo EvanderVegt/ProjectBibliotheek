@@ -1,35 +1,44 @@
 <?php include 'General.php';
+    $myDate = date("d-m-Y H:i:s");
+    $conn = connectionDB();
 ?>
-
 
 <html>
     <head>
-    <header>Bewerken</header>
-        <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
-            <script src="javascript.js" type="text/javascript"></script>
-    <meta charset="UTF-8">
-    <title>Toevoegen</title>
-    <nav>
-        <div class="topnav" id="myTopnav">
-            <a href="index.php" class="active">Home</a>
-            <a href="toevoegen.php"> Toevoegen </a>
-            <a href="bibliotheek.php"> Bibliotheek </a>
-            <a href="#notities">Notities </a>
-        </div>
-    </nav>
-</head>
-<body>
+        <header>Bewerken</header>
+            <link rel = "stylesheet" type = "text/css" href="bibliotheek.css">
+                <script src="javascript.js" type="text/javascript"></script>
+                    <meta charset="UTF-8">
+                        <title>Toevoegen</title>
+                            <nav>
+                                <div class="topnav" id="myTopnav">
+                                    <a href="index.php" class="active">Home</a>
+                                    <a href="toevoegen.php"> Toevoegen </a>
+                                    <a href="bibliotheek.php"> Bibliotheek </a>
+                                    <a href="#notities">Notities </a>
+                                </div>
+                            </nav>
+                                    <style>
+                                        #layout{
+                                            width:100%;
+                                            height:200px;
+                                        }
+                                        #linker{
+                                            width:50%;
+                                        }
+                                        #rechter{
 
-
-    <?php
-    $myDate = date("d-m-Y H:i:s");
-
-    $conn = connectionDB();
-
-    if ($conn->connect_error)
-        die($conn->connect_error);
-
-    if (isset($_POST['delete']) && isset($_POST['Titel'])) {
+                                        }
+                                    </style>
+    </head>
+    <body>
+        <table id="layout" border="0">
+            
+            
+            <tr><td id="linker">
+<?PHP
+                    
+                        if (isset($_POST['delete']) && isset($_POST['Titel'])) {
         $titel = get_post($conn, 'Titel');
         print_r($titel);
         $query = "DELETE FROM `evdv_boek` WHERE Titel='$titel'";
@@ -78,6 +87,16 @@
   </pre></form>
 _END;
 
+                    
+                    
+
+                    
+                    
+                    
+?>  
+                </td><td id="rechter">
+                    
+<?PHP
     $query = "SELECT * FROM `evdv_boek`";
     $result = $conn->query($query);
     if (!$result)
@@ -88,19 +107,19 @@ _END;
     for ($j = 0; $j < $rows; ++$j) {
         $result->data_seek($j);
         $row = $result->fetch_array(MYSQLI_NUM);
-
-        echo <<<_END
-  <pre>
-    Boek_id $row[0]
-Invoerdatum $row[1]
-      Titel $row[2]
-     Auteur $row[3]
-       Isbn $row[4]
-   Uitgever $row[5]
-  Categorie $row[6]
-    Ranking $row[7]
-  </pre>
-_END;
+  }
+//        echo <<<_END
+//  <pre>
+//    Boek_id $row[0]
+//Invoerdatum $row[1]
+//      Titel $row[2]
+//     Auteur $row[3]
+//       Isbn $row[4]
+//   Uitgever $row[5]
+//  Categorie $row[6]
+//    Ranking $row[7]
+//  </pre>
+//_END;
     ?>
     
     
@@ -116,23 +135,27 @@ _END;
      </div>
  <?php
  
-   }
+ 
+                    
+                    
 
-    $result->close();
+                
+                
+?>              
+                </td></tr>
+
+        </table>
+<?PHP
+            $result->close();
     $conn->close();
 
     function get_post($conn, $var) {
         return $conn->real_escape_string($_POST[$var]);
     }
-    ?>
+?>
     
 
-</body>
+        
+        
+    </body>
 </html>
-
-
-
-
-
-
- 
