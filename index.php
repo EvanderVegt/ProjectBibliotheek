@@ -22,18 +22,6 @@ $conn = connectionDB();
 
 
 
-    <style>
-        #layout{
-            width:100%;
-            height:100px;
-        }
-        #linker{
-            width:50%;
-        }
-        #rechter{
-
-        }
-    </style>
 </head>
 <body>
 
@@ -151,10 +139,6 @@ $conn = connectionDB();
     <?php
     $result->close();
     $conn->close();
-
-    function get_post($conn, $var) {
-        return $conn->real_escape_string($_POST[$var]);
-    }
     ?>
 
 </body>

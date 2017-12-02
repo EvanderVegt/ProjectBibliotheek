@@ -19,24 +19,12 @@ $conn = connectionDB();
             <a href="#notities">Notities </a>
         </div>
     </nav>
-    <style>
-        #layout{
-            width:100%;
-            height:100px;
-        }
-        #linker{
-            width:30%;
-        }
-        #rechter{
-
-        }
-    </style>
 </head>
-<body>
-    <table id="layout" border="0">
+    <body>
+        <table id="layout" border="0">
 
 
-        <tr><td id="linker">        
+            <tr><td id="linker">        
                 <?PHP
                 if (isset($_POST['Titel']) &&
                         isset($_POST['Auteur']) &&
@@ -121,9 +109,7 @@ _END;
                 $result->close();
                 $conn->close();
 
-                function get_post($conn, $var) {
-                    return $conn->real_escape_string($_POST[$var]);
-                }
+
                 ?>              
                             </td></tr>           
 

@@ -102,4 +102,8 @@ function createTagSelect($ParamConn) {
     $eruit .= "</select>";
     return $eruit;
 }
+
+function get_post($conn, $var) {
+    return $conn->real_escape_string($_POST[$var]);
+}
 ?> 
