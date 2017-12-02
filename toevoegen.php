@@ -22,7 +22,7 @@ $conn = connectionDB();
     <style>
         #layout{
             width:100%;
-            height:400px;
+            height:100px;
         }
         #linker{
             width:50%;
