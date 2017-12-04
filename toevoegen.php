@@ -21,7 +21,7 @@ $conn = connectionDB();
     </nav>
 </head>
     <body>
-        <table id="layout" border="0">
+        <table id="layout">
 
 
             <tr><td id="linker">        
@@ -66,6 +66,7 @@ _END;
                 ?>  
                 
             </td><td></td></tr>
+            
                         <tr><td id="boek">
                                 
                       

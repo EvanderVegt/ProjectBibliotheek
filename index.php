@@ -82,7 +82,7 @@ $conn = connectionDB();
                 }
                 ?>
 
-                <div id="input notitie">
+
 
                     <?php
 //-----Notities (Titel selecteren-Text invoeren en verzenden--------------------
@@ -102,7 +102,7 @@ $conn = connectionDB();
                     . '    <input class="button" type="submit" value="Verzenden">';
                     echo '</pre></form>';
                     ?>
-                </div>                 
+               
 
 
 
