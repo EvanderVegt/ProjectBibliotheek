@@ -87,10 +87,10 @@ LEFT JOIN evdv_notitie ON evdv_boek.Boek_id = evdv_notitie.boek_id;";
     return$TR;
 }
 
-function createTagSelect($ParamConn) {
+function createTagSelect($conn) {
     $sql = "SELECT * FROM `evdv_boek`;";
 
-    $erinResultSet = $ParamConn->query($sql);
+    $erinResultSet = $conn->query($sql);
 
     $eruit = "<select id=eriksselectboek onchange=letsgaan() name=boek >";
     for ($x = 0; $x < $erinResultSet->num_rows; $x++) {
